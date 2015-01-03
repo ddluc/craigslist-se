@@ -1,6 +1,5 @@
 /**
  * craigslist/getListings
- *
  */
 
 var cheerio = require('cheerio'),
@@ -15,7 +14,7 @@ module.exports =  function() {
   var url = 'http://portland.craigslist.org/search/mlt/roo?'
   var  listings = [];
   request(url, function(err, response, html) {
-    if (err) defer.reject(err);
+    if (err) fetchingListingsFromCraigslist.reject(err);
     var $ = cheerio.load(html);
     $rows = $('.row');
     _.each($rows, function(row, index, rowsArr) {

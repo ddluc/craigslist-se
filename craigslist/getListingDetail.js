@@ -14,7 +14,7 @@ module.exports = function(listings) {
     var url = 'http://portland.craigslist.org' + listing.href;
 
     request(url, function(err, response, html) {
-      if (err) defer.reject(err);
+      if (err) gettingListingDetailsFromCraigslist.reject(err);
       var $ = cheerio.load(html);
 
       /**
