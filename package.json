@@ -1,0 +1,17 @@
+{
+  "name": "craiglist",
+  "version": "0.0.1",
+  "description": "help me find a house",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Dan Lucas",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "express": "^4.10.6",
+    "request": "^2.51.0",
+    "underscore": "^1.7.0"
+  }
+}
