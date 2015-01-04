@@ -23,8 +23,8 @@ module.exports = function(listings) {
       var score = 0,
           matches = {
             price: false,
-            neighborhoods: {},
-            keywords : {}
+            neighborhoods: [],
+            keywords : []
           };
 
       /**find listings in price range **/
@@ -40,23 +40,24 @@ module.exports = function(listings) {
 
       /** find matching neighboorhoods **/
       if (listing.neighborhood && listing.postBody) {
+
         var neighborhoods = filters.neighborhoods;
 
         _.each(neighborhoods, function(neighborhood, index, neighborhoodsArr) {
 
         if (listing.neighborhood.toLowerCase().search(neighborhood.name) != -1) {
-          score+= neighborhood.points
-          matches.neighborhoods[neighborhood.name] = true;
+          score+= neighborhood.points;
+          matches.neighborhoods.push(neighborhood.name);
         }
 
         else if(listing.title.toLowerCase().search(neighborhood.name) != -1) {
-          score+= neighborhood.points
-          matches.neighborhoods[neighborhood.name] = true;
+          score+= neighborhood.points;
+          matches.neighborhoods.push(neighborhood.name);
         }
 
         else if (listing.postBody.toLowerCase().search(neighborhood.name) != -1) {
           score += neighborhood.points / 3
-          matches.neighborhoods[neighborhood.name] = 'mentioned';
+          matches.keywords.push(neighborhood.name);
         }
 
         });
@@ -73,7 +74,7 @@ module.exports = function(listings) {
 
           if (listing.postBody.toLowerCase().search(keyword.slug) != -1) {
             score += keyword.points
-            matches.keywords[keyword.slug] = true
+            matches.keywords.push(keyword.slug);
           }
 
         });
@@ -81,7 +82,7 @@ module.exports = function(listings) {
       }
 
 
-      listing.score = score;
+      listing.score = Math.floor(score);
       listing.matches = matches;
 
       if (index == listingsArr.length - 1) {

@@ -22,6 +22,8 @@ module.exports = function(listings) {
        **/
 
        listing.postBody = $('#postingbody').html();
+       listing.image = $($('.tray').find('img')).attr('src'); 
+       listing.fullUrl = url;
 
        if (index == listingsArr.length - 1) {
            gettingListingDetailsFromCraigslist.resolve(listings);

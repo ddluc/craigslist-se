@@ -1,0 +1,50 @@
+<!doctype>
+<html>
+<head>
+  <title>craigslistSE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/main.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+</head>
+<body>
+
+  <div class="pure-g">
+  <% include filters.ejs %>
+
+  <div class="pure-u-2-3">
+  <% for (var i=0; i < listings.length; i++) {%>
+    <div class="row">
+      <% if (listings[i].image) {%>
+      <img class="thumb" src="<%= listings[i].image%>" alt="house"/>
+      <% } else { %>
+        <img class="thumb" src="http://placehold.it/200x150/" alt="house"/>
+      <%}%>
+      <div class="detail">
+        <p class="title"><%= listings[i].title %></p>
+        <span class="price"><%= listings[i].price %></span>
+        <div class="score">
+          <strong>score:</strong>
+          <span><%= listings[i].score %></span>
+        </div>
+        <div class="neighborhoods">
+          <strong>neighborhoods:</strong>
+          <% for (var j=0; j < listings[i].matches.neighborhoods.length; j++) {%>
+            <span class="tag"><%=listings[i].matches.neighborhoods[j] %></span>
+          <%}%>
+        </div>
+        <div class="keywords">
+          <strong>keywords:</strong>
+          <% for (var j=0; j < listings[i].matches.keywords.length; j++) {%>
+            <span class="tag"><%=listings[i].matches.keywords[j] %></span>
+          <%}%>
+        </div>
+        <a href="<%=listings[i].fullUrl%>" target="_blank">Read on Craigslist</a>
+      </div>
+    </div>
+  <%}%>
+  </div>
+
+</div>
+
+
+</body>

@@ -10,19 +10,17 @@
 
    scrape: function(req, res) {
      craigslist.getListings().then(function(listings) {
-         craigslist.getListingDetail(listings).then(function(listings) {
-           fs.writeFile('./data/listings.json', JSON.stringify(listings, null, 4), function(err) {
-             if (err) throw err;
-             else {
-               res.status(200).send({
-                 status: 'SUCCESS',
-                 results: listings
-               });
-             }
-           });
-
+        craigslist.getListingDetail(listings).then(function(listings) {
+         fs.writeFile('./data/listings.json', JSON.stringify(listings, null, 4), function(err) {
+           if (err) throw err;
+           else {
+             craigslist.applyFilters(listings).then(function(listings) {
+               res.render('../views/results.ejs', {listings: listings});
+             });
+           }
          });
-       })
+        });
+      })
        .fail(function(err) {
          res.status(500).send(err);
        });
@@ -34,13 +32,14 @@
        else {
          var listings = JSON.parse(data);
          craigslist.applyFilters(listings).then(function(listings) {
-           res.status(200).send({
-             status: 'SUCCESS',
-             results: listings
-           });
+           res.render('../views/results.ejs', {listings: listings});
          });
        }
      })
+   },
+
+   updateFilters: function(req, res) {
+     /** TODO: implement filter updating method **/
    },
 
    home: function(req, res) {
