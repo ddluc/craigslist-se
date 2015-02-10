@@ -16,7 +16,6 @@
     {"name": "tabor", "points": 5}
   ],
   "keywords": [
-    {"slug": "roommates", "points": 10},
     {"slug": "roomate", "points": 5},
     {"slug": "cook", "points": 5},
     {"slug": "hockey", "points": 30},
@@ -32,7 +31,6 @@
     {"slug": "30s", "points": 0},
     {"slug": "30's", "points": 0},
     {"slug": "40s", "points": -10},
-    {"slug": "40's", "points": -10},
-    {"slug": "queer", "points": -20}
+    {"slug": "40's", "points": -10}
   ]
 }
