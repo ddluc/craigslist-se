@@ -17,16 +17,22 @@ var models = {
       this[field] = value
     };
 
+    Search.prototype.getField = function(field) {
+      return this[field];
+    }
+
     Search.prototype.loadPreviousSearch = function(searchParams) {
-      this.name = searchParams.name;
-      this.price = searchParams.price;
-      this.location = searchParams.location;
+      this.uniqueId = searchParams.id;
+      this.minPrice = searchParams.min_price;
+      this.maxPrice = searchParams.max_price;
+      this.city = searchParams.city;
+      this.county = searchParams.county;
       this.neighborhoods = searchParams.neighborhoods;
       this.keywords = searchParams.keywords
     };
 
     Search.prototype.submit = function() {
-      //max request!
+
     };
 
     return Search;

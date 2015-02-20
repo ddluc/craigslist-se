@@ -6,11 +6,14 @@ search = new SearchModel();
 
 var SearchForm = React.createClass({
   getInitialState: function() {
-    debugger;
     return {
-      reloaded: RELOADED,
       pristine: true,
       valid: true
+    }
+  },
+  componentWillMount: function() {
+    if (this.props.filters) {
+      search.loadPreviousSearch(this.props.filters);
     }
   },
   handleSubmit: function(e) {
@@ -37,7 +40,7 @@ var SearchForm = React.createClass({
 
 var TextField = React.createClass({
   getInitialState: function() {
-    return {userInput: ''}
+    return {userInput: search.getField(this.props.name)}
   },
   handleChange: function(e) {
     var userInput = e.target.value
@@ -83,9 +86,8 @@ var PriceForm = React.createClass({
 
 var Filters = React.createClass({
   getInitialState: function () {
-    var placeholder = {key: 'hello', score: ''};
     return {
-      filters : [placeholder]
+      filters : search.getField(this.props.type + 's')
     };
   },
   handleChange: function(e) {
@@ -122,14 +124,14 @@ var Filters = React.createClass({
           <input placeholder={this.props.exampleKey}
                  type="text"
                  name={inputNames.filterName}
-                 value={filter.key}
+                 value={filter.slug}
                  onChange={this.handleChange}
                  className="key" />
           <label> Score: </label>
           <input placeholder={this.props.exampleScore}
                  type="text"
                  name={inputNames.filterScore}
-                 value={filter.score}
+                 value={filter.points}
                  onChange={this.handleChange}
                  className="score"/>
         </div>
