@@ -45,19 +45,19 @@ module.exports = function(listings) {
 
         _.each(neighborhoods, function(neighborhood, index, neighborhoodsArr) {
 
-        if (listing.neighborhood.toLowerCase().search(neighborhood.name) != -1) {
+        if (listing.neighborhood.toLowerCase().search(neighborhood.slug) != -1) {
           score+= neighborhood.points;
-          matches.neighborhoods.push(neighborhood.name);
+          matches.neighborhoods.push(neighborhood.slug);
         }
 
-        else if(listing.title.toLowerCase().search(neighborhood.name) != -1) {
+        else if(listing.title.toLowerCase().search(neighborhood.slug) != -1) {
           score+= neighborhood.points;
-          matches.neighborhoods.push(neighborhood.name);
+          matches.neighborhoods.push(neighborhood.slug);
         }
 
-        else if (listing.postBody.toLowerCase().search(neighborhood.name) != -1) {
+        else if (listing.postBody.toLowerCase().search(neighborhood.slug) != -1) {
           score += neighborhood.points / 3
-          matches.keywords.push(neighborhood.name);
+          matches.keywords.push(neighborhood.slug);
         }
 
         });
