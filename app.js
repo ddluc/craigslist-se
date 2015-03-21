@@ -11,7 +11,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views/assets'));
 
 
-
 app.get('/', controllers.home);
 app.get('/scrape', controllers.scrape);
 app.get('/results', controllers.results);
