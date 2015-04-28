@@ -4,16 +4,15 @@
  **/
 
 var express = require('express'),
-    controllers = require('./controllers');
+    controllers = require('./controllers'),
+    middleware = require('./middleware')
 
 var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views/assets'));
 
-
-
 app.get('/', controllers.home);
-app.get('/scrape', controllers.scrape);
+app.get('/scrape', [middleware.loadQuery], controllers.scrape);
 app.get('/results', controllers.results);
 
 app.listen(3000, function(err) {

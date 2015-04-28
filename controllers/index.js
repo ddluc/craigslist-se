@@ -3,18 +3,18 @@
  */
 
  var requireChildren = require('require-children'),
-     fs = require('fs');
+     fs = require('fs'),
      craigslist = requireChildren('../craigslist',  module);
 
  module.exports = {
 
    scrape: function(req, res) {
-     craigslist.getListings().then(function(listings) {
-        craigslist.getListingDetail(listings).then(function(listings) {
+     craigslist.getListings(req.query).then(function(listings) {
+        craigslist.getListingDetail(listings, req.query).then(function(listings) {
          fs.writeFile('./data/listings.json', JSON.stringify(listings, null, 4), function(err) {
            if (err) throw err;
            else {
-             craigslist.applyFilters(listings).then(function(listings) {
+             craigslist.applyFilters(listings, req.query).then(function(listings) {
                res.render('../views/results.ejs', {listings: listings});
              });
            }

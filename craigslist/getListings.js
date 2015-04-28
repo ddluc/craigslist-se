@@ -7,11 +7,12 @@ var cheerio = require('cheerio'),
     request = require('request'),
     q = require('q');
 
-module.exports =  function() {
+module.exports =  function(query) {
 
   var fetchingListingsFromCraigslist = q.defer();
 
-  var url = 'http://portland.craigslist.org/search/mlt/roo?'
+  var url = 'http://' + query.city + '.craigslist.org/search/' + query.county + '/' + query.type + '?';
+  console.log(url); 
   var  listings = [];
   request(url, function(err, response, html) {
     if (err) fetchingListingsFromCraigslist.reject(err);
