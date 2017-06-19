@@ -35,4 +35,5 @@ The `city`, `county`, and `type` are all components of the url you want to searc
 
 ## Collect Data
 `/scrape` will scrape the data for the 100 most recent listings and save them as a json file
+
 `/results` will display the most recently scraped data in a web ui
