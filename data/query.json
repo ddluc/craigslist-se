@@ -1,6 +1,6 @@
 {
-  "city": "sfbay",
-  "county": "sfc",
+  "city": "portland",
+  "county": "mlt",
   "type": "apa",
   "filters": {
     "max_price": 800,
@@ -20,22 +20,12 @@
       {"name": "tabor", "points": 5}
     ],
     "keywords": [
-      {"slug": "studio", "points": 5},
       {"slug": "cook", "points": 5},
       {"slug": "hockey", "points": 30},
       {"slug": "music", "points": 10},
       {"slug": "vegetarian", "points": 10},
       {"slug": "bike", "points": 10},
-      {"slug": "whole foods", "points": 10},
-      {"slug": "new seasons", "points": 10},
-      {"slug": "chickens", "points": 10},
-      {"slug": "20s", "points": 20},
-      {"slug": "20's", "points": 20},
-      {"slug": "twenties", "points": 20},
-      {"slug": "30s", "points": 0},
-      {"slug": "30's", "points": 0},
-      {"slug": "40s", "points": -10},
-      {"slug": "40's", "points": -10}
+      {"slug": "new seasons", "points": 10}
     ]
   }
 }
