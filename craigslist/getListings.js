@@ -12,12 +12,13 @@ module.exports =  function(query) {
   var fetchingListingsFromCraigslist = q.defer();
 
   var url = 'http://' + query.city + '.craigslist.org/search/' + query.county + '/' + query.type + '?';
-  console.log(url); 
+  console.log('Fetching Data For: ' + url);
   var  listings = [];
   request(url, function(err, response, html) {
     if (err) fetchingListingsFromCraigslist.reject(err);
     var $ = cheerio.load(html);
-    $rows = $('.row');
+    $rows = $('.result-row');
+    debugger;
     _.each($rows, function(row, index, rowsArr) {
 
       var $row = $(row),
