@@ -18,7 +18,6 @@ module.exports =  function(query) {
     if (err) fetchingListingsFromCraigslist.reject(err);
     var $ = cheerio.load(html);
     $rows = $('.result-row');
-    debugger;
     _.each($rows, function(row, index, rowsArr) {
 
       var $row = $(row),
@@ -31,10 +30,11 @@ module.exports =  function(query) {
       newListing.title = $($row.find('.hdrlnk')).html();
       newListing.href = $($row.find('.hdrlnk')).attr('href');
       newListing.time = $($row.find('time')).attr('datetime');
-      newListing.price = $($row.find('.price')).html();
-      newListing.neighborhood = $($row.find('small')).html();
+      newListing.price = $($row.find('.result-price')).html();
+      newListing.neighborhood = $($row.find('.result-hood')).html();
 
       listings.push(newListing);
+      debugger;
 
       //when all elements have been searched
       if (index == rowsArr.length -1) {

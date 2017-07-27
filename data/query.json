@@ -1,7 +1,7 @@
 {
   "city": "portland",
   "county": "mlt",
-  "type": "apa",
+  "type": "roo",
   "filters": {
     "max_price": 800,
     "min_price": 400,

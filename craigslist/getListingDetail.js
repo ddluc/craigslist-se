@@ -20,9 +20,8 @@ module.exports = function(listings, query) {
       /**
        * get the body of the post
        **/
-
-       listing.postBody = $('#postingbody').html();
-       listing.image = $($('.tray').find('img')).attr('src');
+       listing.postBody = $('#postingbody .print-information').html();
+       listing.image = $($('.swipe').find('img')).attr('src')
        listing.fullUrl = url;
 
        if (index == listingsArr.length - 1) {
